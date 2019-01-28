@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'osom-pwa';
+  currentUser = 'tmp';
+
+  logout() {
+    // Do nothing();
+  }
 }

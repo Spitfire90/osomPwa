@@ -1,0 +1,13 @@
+<p>Home page</p>
+
+<h1 *ngIf="!UserName">You are not authenticated</h1>
+<h1 *ngIf="UserName">Hello, {{UserName}}! You are now authenticated</h1>
+<p>
+    <button (click)="login()" mat-stroked-button color="primary">Login</button>
+    <button (click)="logout()" mat-stroked-button color="primary">Logout</button>
+</p>    
+
+<button (click)="addVisit()" mat-stroked-button color="primary">Add Visit</button>
+<button (click)="addMultipleVisits()" mat-stroked-button color="primary">Add Multiple Visits</button>
+
+<div *ngFor="let visit of visitList">{{ visit.id }} - {{ visit.localTime }} - {{ visit.description }}</div>
