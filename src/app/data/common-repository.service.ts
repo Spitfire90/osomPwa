@@ -33,18 +33,6 @@ export class CommonRepositoryService {
     return this.visitResultLoaded.asObservable();
   }
 
-  public loadItems(): Observable<Visit[]> {
-    let result = this.db.visits.where("id").above(3).toArray();
-    let test = of(result).pipe(map(x => Object.assign(new Visit(), x)))
-    console.log(test);
-    return test;
-    //const m = pipe(map(next => Object.assign(new Visit(), next)));
-    // return m(from(result));
-    //return from<Visit[]>(this.db.visits.where("id").above(3).toArray()).pipe(map((next => Object.assign(new Visit(), next))));
-    // return from(this.db.visits.where("id").above(3).toArray()) .pipe(map(next => Object.assign(new Visit(), next))));
-    // t.pipe(map(next => Object.assign(new Visit(), next)));
-  }
-
   public getWhere(): Observable<Visit[]> {
     this.getItemsFromIndexedDbWhere();
     return this.visitResultLoaded.asObservable();
@@ -64,17 +52,14 @@ export class CommonRepositoryService {
 
   private async getItemsFromIndexedDb() {
     const allItems: Visit[] = await this.db.visits.toArray()
-    let visits: Visit[] = [];
-    allItems.forEach(next => {
-      const v: Visit = Object.assign(new Visit(), next);
-      visits.push(v);
-    });
+    const visits = allItems.map(data => Object.assign(new Visit(), data))
     this.visitResultLoaded.next(visits);
   }
 
   private async getItemsFromIndexedDbWhere() {
     const allItems: Visit[] = await this.db.visits.where("id").above(3).toArray();
-    this.visitResultLoaded.next(allItems);
+    const visits = allItems.map(data => Object.assign(new Visit(), data))
+    this.visitResultLoaded.next(visits);
   }
 }
 

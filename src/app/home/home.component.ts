@@ -15,12 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAllVisit();
-    //let reg = new ServiceWorkerRegistration();
-    
-    //reg.sync.register('myFirstSyncNicolas');
-    //reg.addEventListener()
-    //console.log(this.sw.state);
+    this.getWhereVisit();
   }
 
   login() {
@@ -35,14 +30,12 @@ export class HomeComponent implements OnInit {
     let visit = new Visit();
     visit.date = new Date(Date.now());
     visit.description = "Description";
-    // visit.id = 1;
     this.repository.addVisit(visit);
-    // this.getAllVisit();
     this.getAllVisit();
   }
 
   addMultipleVisits() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 5; i++) {
       let visit = new Visit();
       visit.date = new Date(Date.now());
       visit.description = "Description";
@@ -54,12 +47,11 @@ export class HomeComponent implements OnInit {
   getAllVisit() {
     this.repository.getAll().subscribe(
       (r) => { this.visitList = r || [];
-              // console.log(r);
       }, (error) => console.log(error));
   }
 
   getWhereVisit() {
-    this.repository.loadItems().subscribe(
+    this.repository.getWhere().subscribe(
       (r) => this.visitList = r || []
       , (error) => console.log(error));
   }
