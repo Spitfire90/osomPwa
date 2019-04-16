@@ -17,4 +17,8 @@ export class AppNavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  logout() {
+    console.warn("Logout called but not implemented");
+  }
+
 }

@@ -64,3 +64,16 @@ see https://stackoverflow.com/questions/21925992/chrome-devtools-devices-does-no
 
 For ADB, we can use the single ADB package https://forum.xda-developers.com/showthread.php?t=2317790)
 Run `adb devices` to start the ADB demon
+
+
+Deploy GH Pages
+ng build --prod --base-href "https://Spitfire90.github.io/osomPwa/"
+npx ngh --dir=dist/osom-pwa
+
+
+Add online-status service to be notified when offline/online
+Add SwUpdate subcription to be notified when new version is available
+
+# Generating SSH Key + add to ssh agent
+https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Location: C:\Users\nanto\.ssh

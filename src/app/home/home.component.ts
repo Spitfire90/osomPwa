@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 import { CommonRepositoryService, Visit } from '../data/common-repository.service';
+import { OnlineStatusService } from '../_services/online-status.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,29 @@ export class HomeComponent implements OnInit {
 
   visitList: Visit[];
 
-  constructor(private authenticationService: AuthenticationService, private repository: CommonRepositoryService) { 
+  constructor(private authenticationService: AuthenticationService, private repository: CommonRepositoryService, 
+    private readonly onlineStatusService: OnlineStatusService, private snackBar: MatSnackBar) {
+    this.registerToEvents(onlineStatusService) 
+  }
+
+  private registerToEvents(onlineStatusService: OnlineStatusService) {
+    onlineStatusService.connectionChanged.subscribe(online => {
+      let message = '';
+      if (online) {
+        console.log('went online');
+        message = 'Application is now online';
+      } else {
+        console.log('went offline');
+        message = 'Application is now offline';
+      }
+
+      let config = new MatSnackBarConfig();
+      config.verticalPosition = 'bottom';
+      config.horizontalPosition = 'center';
+      config.duration = 3000;
+
+      this.snackBar.open(message, undefined, config);
+    });
   }
 
   ngOnInit() {

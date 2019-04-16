@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatSnackBar, MatSnackBarModule, MatCardModule } from '@angular/material';
 import { ScanBarcodeComponent } from './pages/scan-barcode/scan-barcode.component'
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { OAuthModule } from 'angular-oauth2-oidc';
@@ -39,6 +39,8 @@ import { AuthGuard } from './_helpers/auth.guard';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatSnackBarModule,
+    MatCardModule,
     ZXingScannerModule,
     OAuthModule.forRoot()
   ],

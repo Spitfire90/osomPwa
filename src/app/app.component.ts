@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UpdateService } from './_services/update.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'osom-pwa';
-  currentUser = 'tmp';
-
-  logout() {
-    // Do nothing();
+  
+  constructor(private updateService: UpdateService) {
   }
 }
