@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './_services/authentication.service';
+import { UpdateService } from './_services/update.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'osom-pwa';
   currentUser = 'tmp';
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private updateService: UpdateService) {
     this.authenticationService.configureAuth();
 
     // The method tryLogin checks, whether the app has got security tokens via the hash-fragment of the URL.

@@ -30,12 +30,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Application details
 Angular CLI 7
 PWA support
+ng add @angular/pwa --project <name of project as in angular.json>
+https://blog.angular-university.io/angular-service-worker/
 
 To launch PWA, we need this server (ng service does not work with ServiceWorkers) - First install http-server
 > npm install -g http-server
 
+> ng build --prod
 Run PWA (without cache)
-http-server -c-1 .\dist\osom-
+http-server -p 8080 -c-1 dist/osom-pwa
 
 Material Design - Add from CLI:
 ng add @angular/material
@@ -53,8 +56,24 @@ Generate Guard
 ng g guard
 Need to be register into app module as provider manually
 
+Add LocalStorage package (should support IndexedDB)
+npm install @ngx-pwa/local-storage@7
+
 # Debug with Chrome DevTools and remote Android device
 see https://stackoverflow.com/questions/21925992/chrome-devtools-devices-does-not-detect-device-when-plugged-in
 
 For ADB, we can use the single ADB package https://forum.xda-developers.com/showthread.php?t=2317790)
 Run `adb devices` to start the ADB demon
+
+
+Deploy GH Pages
+ng build --prod --base-href "https://Spitfire90.github.io/osomPwa/"
+npx ngh --dir=dist/osom-pwa
+
+
+Add online-status service to be notified when offline/online
+Add SwUpdate subcription to be notified when new version is available
+
+# Generating SSH Key + add to ssh agent
+https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Location: C:\Users\nanto\.ssh
