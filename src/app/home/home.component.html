@@ -1,0 +1,15 @@
+<p>Home page</p>
+
+<h1 *ngIf="!isAuthenticated">You are not authenticated</h1>
+<h1 *ngIf="isAuthenticated">Welcome {{userName}}</h1>
+<p>
+    <button (click)="login()" mat-stroked-button color="primary">Login</button>
+    <button (click)="logout()" mat-stroked-button color="primary">Logout</button>
+</p>    
+
+<div>
+    <p>The token is expired: {{ isExpired }}</p>
+    <p *ngIf="expirationDate">The token will expire at: {{ expirationDate }}</p>
+</div>
+
+

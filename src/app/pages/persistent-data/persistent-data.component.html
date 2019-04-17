@@ -1,0 +1,11 @@
+<p>
+    <button (click)="addVisit()" mat-stroked-button color="primary">Add Visit</button>
+    <button (click)="addMultipleVisits()" mat-stroked-button color="primary">Add Multiple Visits</button>
+</p>
+
+<p><button (click)="startSync()" mat-stroked-button color="primary">Sync</button></p>
+
+<div *ngFor="let visit of visitList">{{ visit.id }} - {{ visit.date }} - {{ visit.description }}</div>
+
+<p>Routes</p>
+<div *ngFor="let route of routeList">{{ route.id }} - {{ route.date }} - {{ route.description }}</div>
